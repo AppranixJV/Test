@@ -15,20 +15,30 @@ jobs:
       with:
         python-version: 3.x
 
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
     - name: Install ngrok
       run: |
         wget -O ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         tar -xvf ngrok.tgz
         ./ngrok config add-authtoken 1x1iUeEkvs2FdBw3tDB4cpQ09h3_51iNFXXyoobXvmx7PiB8V
 
-    - name: Install Apache2
+    - name: Execute script
       run: |
-        sudo apt-get -y install apache2
+        bash script.sh
 
     - name: Start Apache2
       run: |
         sudo service apache2 start
 
-    - name: Run ngrok
+    - name: Run ngrok in background
       run: |
-        ./ngrok connect addr="80"
+        ./ngrok http 80 > ngrok_output.log &
+
+    - name: Display ngrok web interface link
+      run: |
+        sleep 10 # Wait for ngrok to start
+        cat ngrok_output.log | grep -o "http://.*" # Extract the ngrok URL
+
