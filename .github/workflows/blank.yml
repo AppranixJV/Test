@@ -19,7 +19,9 @@ jobs:
         pip install pyngrok
         
     - name: Install Apache2
-      run: sudo apt-get update && sudo apt-get install -y apache2
+      run: |
+        sudo apt-get update && sudo apt-get install -y apache2
+        service apache2 start
 
     - name: Download ngrok
       run: |
@@ -33,7 +35,7 @@ jobs:
         from pyngrok import ngrok
 
         # start the server
-        public_url = ngrok.connect(addr="5000")
+        public_url = ngrok.connect(addr="80")
         print(f"Public URL: {public_url}")
         EOF
 
