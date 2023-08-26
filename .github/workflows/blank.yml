@@ -17,6 +17,9 @@ jobs:
     - name: Install dependencies
       run: |
         pip install pyngrok
+        
+    - name: Install Apache2
+      run: sudo apt-get update && sudo apt-get install -y apache2
 
     - name: Download ngrok
       run: |
