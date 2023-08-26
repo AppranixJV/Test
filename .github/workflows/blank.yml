@@ -15,19 +15,11 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-
     - name: Install ngrok
       run: |
         wget -O ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         tar -xvf ngrok.tgz
         ./ngrok config add-authtoken 1x1iUeEkvs2FdBw3tDB4cpQ09h3_51iNFXXyoobXvmx7PiB8V
-
-    - name: Execute script
-      run: |
-        bash script.sh
 
     - name: Start Apache2
       run: |
