@@ -1,0 +1,32 @@
+name: Rapid Leech Workflow
+
+jobs:
+  run_rapid_leech:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install ngrok
+      run: |
+        wget -O ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+        tar -xvf ngrok.tgz
+        ./ngrok config add-authtoken 1x1iUeEkvs2FdBw3tDB4cpQ09h3_51iNFXXyoobXvmx7PiB8V
+
+    - name: Install Apache2
+      run: |
+        sudo apt-get -y install apache2
+
+    - name: Start Apache2
+      run: |
+        sudo service apache2 start
+
+    - name: Run ngrok
+      run: |
+        ./ngrok connect addr="80"
