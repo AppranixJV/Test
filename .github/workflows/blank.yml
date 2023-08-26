@@ -1,8 +1,5 @@
 name: Ngrok Workflow
-on:
-  push:
-    branches:
-      - main  # Adjust the branch name as needed
+on: [push]
 
 jobs:
   build:
