@@ -53,6 +53,5 @@ jobs:
     - name: Get ngrok Tunnel URL
       run: |
         curl http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'
-
-      run: python -m http.server 5000
+        python -m http.server 5000
 
