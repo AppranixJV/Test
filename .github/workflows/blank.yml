@@ -29,16 +29,18 @@ jobs:
         tar -xvf ngrok.tgz
         ./ngrok authtoken 2LgAs7npvh1Vu7X6TDvaDEfAhMR_45V9PxjYgiT34nz6A8UjM
         ./ngrok http 80 &
+        sleep 10  # Adjust this time if needed
+        curl http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url'
 
-    - name: Run Python script
-      run: |
-        python - <<EOF
-        from pyngrok import ngrok
+    # - name: Run Python script
+    #   run: |
+    #     python - <<EOF
+    #     from pyngrok import ngrok
 
-        # start the server
-        public_url = ngrok.connect(addr="80")
-        print(f"Public URL: {public_url}")
-        EOF
+    #     # start the server
+    #     public_url = ngrok.connect(addr="80")
+    #     print(f"Public URL: {public_url}")
+    #     EOF
 
     - name: Start local server
       run: python -m http.server 5000
