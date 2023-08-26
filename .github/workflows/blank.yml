@@ -1,5 +1,7 @@
 name: Rapid Leech Workflow
 
+on: [push]
+
 jobs:
   run_rapid_leech:
     runs-on: ubuntu-latest
