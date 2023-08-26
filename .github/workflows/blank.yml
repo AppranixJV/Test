@@ -27,7 +27,7 @@ jobs:
       run: |
         wget -O ngrok.tgz https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         tar -xvf ngrok.tgz
-        ./ngrok authtoken 1x1iUeEkvs2FdBw3tDB4cpQ09h3_51iNFXXyoobXvmx7PiB8V
+        ./ngrok authtoken 2LgAs7npvh1Vu7X6TDvaDEfAhMR_45V9PxjYgiT34nz6A8UjM
 
     - name: Run Python script
       run: |
