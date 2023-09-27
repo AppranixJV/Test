@@ -21,6 +21,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add hello_world.txt
+        git add .
         git commit -m "Add hello_world.txt"
         git push
