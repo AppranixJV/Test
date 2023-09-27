@@ -1,7 +1,7 @@
 name: Create and push file
 on:
   schedule:
-    - cron:  '5 18 * * *'
+    - cron:  '36 12 * * *'
 
 jobs:
   build:
