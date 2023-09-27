@@ -1,7 +1,7 @@
 name: Create and push file
 on:
   schedule:
-    - cron:  '* * * * *'
+    - cron:  '0 4 * * *' # Runs at 9:30 AM IST (4:00 UTC)
 
 jobs:
   build:
