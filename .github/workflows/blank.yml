@@ -10,13 +10,12 @@ jobs:
     permissions:  
       contents: write
 
-
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Create file
-      run: echo "Hello, World!" > hello_world.txt
+      run: echo "Hello, World!" > hello_world2.txt
 
     - name: Commit and push
       run: |
