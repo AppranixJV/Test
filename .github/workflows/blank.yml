@@ -1,0 +1,24 @@
+name: Create and push file
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create file
+      run: echo "Hello, World!" > hello_world.txt
+
+    - name: Commit and push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add hello_world.txt
+        git commit -m "Add hello_world.txt"
+        git push
