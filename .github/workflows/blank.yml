@@ -1,7 +1,7 @@
-name: Create and push file
+name: Run script and push file
 on:
   schedule:
-    - cron:  '0 4 * * *' # Runs at 9:30 AM IST (4:00 UTC)
+    - cron:  '0 0 * * *' # Runs every day at 12:00 AM IST (6:30 PM UTC)
 
 jobs:
   build:
@@ -13,13 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Create file
-      run: date > hello_world2.txt
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
+    - name: Run script
+      run: python HistoricalDayWeb.py
 
     - name: Commit and push
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "Add hello_world.txt"
+        git commit -m "Update output from HistoricalDayWeb.py"
         git push
